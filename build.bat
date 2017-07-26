@@ -1,7 +1,3 @@
-@setlocal
-set start=%time%
-
-
 :: clean all
 call clear
 
@@ -24,12 +20,10 @@ java -jar swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli
 		-l jaxrs --library=jersey2-custom ^
 		-o stub
 
+:: add stub fixes
+xcopy fixed\stub\pom.xml stub\pom.xml /S /I /Y
+
+
 :: build stub
 cd stub
 call mvn install
-
-
-:: show elapsed time
-set end=%time%
-echo "setup has been started at %start%"
-echo "setup has been finished at %end%"
