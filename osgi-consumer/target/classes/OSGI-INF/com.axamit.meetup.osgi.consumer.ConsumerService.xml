@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0" name="com.axamit.meetup.osgi.consumer.ConsumerService">
-    <implementation class="com.axamit.meetup.osgi.consumer.ConsumerService"/>
-    <property name="service.pid" value="com.axamit.meetup.osgi.consumer.ConsumerService"/>
-    <reference name="authorsApi" interface="com.axamit.meetup.api.AuthorsApi" cardinality="1..1" policy="static" bind="bindAuthorsApi" unbind="unbindAuthorsApi"/>
-    <reference name="booksApi" interface="com.axamit.meetup.api.BooksApi" cardinality="1..1" policy="static" bind="bindBooksApi" unbind="unbindBooksApi"/>
-</scr:component>
