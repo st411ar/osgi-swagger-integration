@@ -1,15 +1,14 @@
 # Swagger integration with OSGi
 ## Usage in Windows
 ### Requirements
-####git
-####maven
+git and maven
 ### setup
 ```
 git clone https://github.com/st411ar/osgi-swagger-integration.git
 cd osgi-swagger-integration
 call setup
 ```
-### run stub
+### run stub server
 ```
 stub
 ```
