@@ -1,6 +1,9 @@
 package com.axamit.meetup.osgi.consumer;
 
 
+import java.util.List;
+
+
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
@@ -9,6 +12,7 @@ import org.osgi.service.component.ComponentContext;
 
 
 import com.axamit.meetup.api.*;
+import com.axamit.meetup.model.*;
 
 
 @Component
@@ -36,7 +40,7 @@ public class ConsumerService {
 		System.out.println(booksApi.getBooks().toBlocking().first());
 		Thread.sleep(1000);
 
-		System.out.println(booksApi.addBook(4, "title 4", author).toBlocking().first());
+		System.out.println(booksApi.addBook(4, "title 4", author.getId()).toBlocking().first());
 		
 		
 		System.out.println("Service com.axamit.meetup.osgi.consumer.SimpleDSComponent has been activated");
