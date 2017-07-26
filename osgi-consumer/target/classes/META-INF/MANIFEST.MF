@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1501060507036
+Bnd-LastModified: 1501063014586
 Build-Jdk: 1.8.0_131
 Built-By: vitaly.kiselev
 Bundle-Description: com.axamit.meetup.osgi.consumer - osgi-consumer

@@ -6,14 +6,15 @@ set start=%time%
 call clear-all
 
 :: download swagger-codegen
-git clone https://github.com/swagger-api/swagger-codegen.git
+:: git clone https://github.com/swagger-api/swagger-codegen.git
+git clone --depth 1 -b 2.3.0 https://github.com/swagger-api/swagger-codegen.git
 
 :: switch to release 2.2.3
-cd swagger-codegen
-git checkout -b release-2.2.3 v2.2.3
+:: cd swagger-codegen
+:: git checkout -b release-2.2.3 v2.2.3
 
 :: add retrofit2-custom library that contains fixes
-cd ..
+:: cd ..
 xcopy fixed\swagger-codegen swagger-codegen /S /I /Y
 
 :: build swagger-codegen
