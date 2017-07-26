@@ -26,6 +26,7 @@ public class ConsumerService {
     protected void activate(ComponentContext ctx) throws InterruptedException {
 		System.out.println("Service com.axamit.meetup.osgi.consumer.SimpleDSComponent is activating");
 
+
 		System.out.println(authorsApi.getAuthors().toBlocking().first());
 		Thread.sleep(1000);
 
@@ -36,12 +37,21 @@ public class ConsumerService {
 		System.out.println(authors);
 		Thread.sleep(1000);
 
+
 		Author author = authors.get(2);
+
+
 		System.out.println(booksApi.getBooks().toBlocking().first());
 		Thread.sleep(1000);
 
 		System.out.println(booksApi.addBook(4, "title 4", author.getId()).toBlocking().first());
+		Thread.sleep(1000);
 		
+		System.out.println(booksApi.getBooks().toBlocking().first());
+		Thread.sleep(1000);
+
+		System.out.println(booksApi.getBook(4).toBlocking().first());
+		Thread.sleep(1000);
 		
 		System.out.println("Service com.axamit.meetup.osgi.consumer.SimpleDSComponent has been activated");
     }
