@@ -1,2 +1,2 @@
 cd stub
-mvn jetty:run
+mvn clean install jetty:run

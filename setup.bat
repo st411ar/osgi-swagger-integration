@@ -3,7 +3,7 @@ set start=%time%
 
 
 :: clean all
-call clear
+call clear-all
 
 :: download swagger-codegen
 git clone https://github.com/swagger-api/swagger-codegen.git
@@ -13,9 +13,11 @@ cd swagger-codegen
 git checkout -b release-2.2.3 v2.2.3
 
 :: add retrofit2-custom library that contains fixes
-xcopy ..\fixed\modules modules /S /I /Y
+cd ..
+xcopy fixed\swagger-codegen swagger-codegen /S /I /Y
 
 :: build swagger-codegen
+cd swagger-codegen
 call mvn install
 
 :: generate client
@@ -37,12 +39,31 @@ java -jar swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli
 		-l jaxrs --library=jersey2-custom ^
 		-o stub
 
+:: add stub fixes
+xcopy fixed\stub stub /S /I /Y
+
 :: build stub
 cd stub
 call mvn install
 
 
+:: generate osgi bundle project
+cd ..
+call mvn archetype:generate ^
+    -DarchetypeGroupId=org.apache.sling ^
+    -DarchetypeArtifactId=sling-bundle-archetype ^
+    -DgroupId=com.axamit.meetup.osgi ^
+    -DartifactId=osgi-client ^
+    -Dversion=1.0.0 ^
+    -Dpackage=com.axamit.meetup.osgi ^
+    -DappsFolderName=osgi-client ^
+    -DartifactName="osgi-client-name" ^
+    -DpackageGroup="osgi-client-group" ^
+    -DinteractiveMode=false
+
+
+
 :: show elapsed time
 set end=%time%
-echo %start%
-echo %end%
+echo "setup has been started at %start%"
+echo "setup has been finished at %end%"
